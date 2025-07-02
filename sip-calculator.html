@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16" />
+    <title>Mutual Fund SIP Calculator</title>
+    <meta
+      name="description"
+      content="Calculate your Mutual Fund SIP returns easily."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/color.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/colors/teal.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-style-3.css" type="text/css" />
+    <style>
+      .sipCalculator_form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    </style>
+  </head>
+
+  <body class="de_light">
+    <div id="wrapper">
+      <div id="header"></div>
+
+      <div id="content" class="no-bottom no-top">
+        <div id="content" class="no-bottom no-top">
+          <section id="section-services" style="background-size: cover">
+            <div class="container" style="background-size: cover">
+              <div class="row" style="background-size: cover">
+                <div
+                  class="col-md-6 offset-md-3 text-center wow fadeInUp animated"
+                  style="
+                    visibility: visible;
+                    animation-name: fadeInUp;
+                    background-size: cover;
+                  "
+                >
+                  <h2>SIP Calculator</h2>
+                </div>
+                <div class="clearfix" style="background-size: cover"></div>
+              </div>
+              <div class="row" style="background-size: cover">
+                <div class="col-md-6" style="background-size: cover">
+                  <div class="calculator">
+                    <!-- SIP/Lumpsum Calculator Form -->
+                    <div class="mb-4 text-center">
+                      <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="Investment Type"
+                        style="
+                          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+                          border-radius: 8px;
+                          overflow: hidden;
+                        "
+                      >
+                        <input
+                          type="radio"
+                          class="btn-check"
+                          name="investment-type"
+                          id="sip-radio"
+                          autocomplete="off"
+                          checked
+                        />
+                        <label
+                          class="btn btn-outline-primary"
+                          for="sip-radio"
+                          style="
+                            font-weight: 600;
+                            padding: 10px 32px;
+                            margin: 1px 0;
+                          "
+                          >SIP</label
+                        >
+
+                        <input
+                          type="radio"
+                          class="btn-check"
+                          name="investment-type"
+                          id="lumpsum-radio"
+                          autocomplete="off"
+                        />
+                        <label
+                          class="btn btn-outline-primary"
+                          for="lumpsum-radio"
+                          style="
+                            font-weight: 600;
+                            padding: 10px 32px;
+                            margin: 1px 0;
+                          "
+                          >Lumpsum</label
+                        >
+                      </div>
+                    </div>
+
+                    <form
+                      id="sip-lumpsum-form"
+                      class="sipCalculator_form"
+                      action="#"
+                      method="post"
+                    >
+                      <!-- SIP Fields -->
+                      <div id="sip-fields">
+                        <div class="form-group calculator-input">
+                          <label for="sip-amount">Monthly Investment</label>
+                          <input
+                            type="number"
+                            id="sip-amount"
+                            name="sip-amount"
+                            class="form-control"
+                            placeholder="Enter monthly investment"
+                            required
+                            inputmode="numeric"
+                            min="0"
+                            value="25000"
+                            onkeydown="return event.key !== 'e' && event.key !== '+' && event.key !== '-'"
+                          />
+                        </div>
+                        <div class="form-group calculator-input">
+                          <label for="sip-rate"
+                            >Expected Rate of Return (%)</label
+                          >
+                          <input
+                            type="number"
+                            id="sip-rate"
+                            name="sip-rate"
+                            class="form-control"
+                            placeholder="Enter annual interest rate"
+                            step="0.01"
+                            required
+                            inputmode="decimal"
+                            min="0"
+                            value="12"
+                            onkeydown="return event.key !== 'e' && event.key !== '+' && event.key !== '-'"
+                          />
+                        </div>
+                        <div class="form-group calculator-input">
+                          <label for="sip-period">Time Period (Years)</label>
+                          <input
+                            type="number"
+                            id="sip-period"
+                            name="sip-period"
+                            class="form-control"
+                            placeholder="Enter time period in years"
+                            required
+                            inputmode="numeric"
+                            min="1"
+                            max="30"
+                            value="10"
+                            onkeydown="return event.key !== 'e' && event.key !== '+' && event.key !== '-'"
+                          />
+                        </div>
+                      </div>
+                      <!-- Lumpsum Fields -->
+                      <div id="lumpsum-fields" style="display: none">
+                        <div class="form-group calculator-input">
+                          <label for="lumpsum-amount">Total Investment</label>
+                          <input
+                            type="number"
+                            id="lumpsum-amount"
+                            name="lumpsum-amount"
+                            class="form-control"
+                            placeholder="Enter total investment"
+                            required
+                            inputmode="numeric"
+                            min="0"
+                            value="25000"
+                            onkeydown="return event.key !== 'e' && event.key !== '+' && event.key !== '-'"
+                          />
+                        </div>
+                        <div class="form-group calculator-input">
+                          <label for="lumpsum-rate"
+                            >Expected Rate of Return (%)</label
+                          >
+                          <input
+                            type="number"
+                            id="lumpsum-rate"
+                            name="lumpsum-rate"
+                            class="form-control"
+                            placeholder="Enter annual interest rate"
+                            step="0.01"
+                            required
+                            inputmode="decimal"
+                            min="0"
+                            value="12"
+                            onkeydown="return event.key !== 'e' && event.key !== '+' && event.key !== '-'"
+                          />
+                        </div>
+                        <div class="form-group calculator-input">
+                          <label for="lumpsum-period"
+                            >Time Period (Years)</label
+                          >
+                          <input
+                            type="number"
+                            id="lumpsum-period"
+                            name="lumpsum-period"
+                            class="form-control"
+                            placeholder="Enter time period in years"
+                            required
+                            inputmode="numeric"
+                            min="1"
+                            max="30"
+                            value="10"
+                            onkeydown="return event.key !== 'e' && event.key !== '+' && event.key !== '-'"
+                          />
+                        </div>
+                      </div>
+                      <button
+                        id="calculate-btn"
+                        class="btn btn-secondary btn-block"
+                        type="button"
+                        style="background-color: #007bff; border-color: #007bff"
+                      >
+                        Calculate
+                      </button>
+                      <script>
+                        // Toggle SIP/Lumpsum fields
+                        document
+                          .getElementById("sip-radio")
+                          .addEventListener("change", function () {
+                            document.getElementById(
+                              "sip-fields"
+                            ).style.display = "block";
+                            document.getElementById(
+                              "lumpsum-fields"
+                            ).style.display = "none";
+                            document.getElementById("calculate-btn").click();
+                          });
+                        document
+                          .getElementById("lumpsum-radio")
+                          .addEventListener("change", function () {
+                            document.getElementById(
+                              "sip-fields"
+                            ).style.display = "none";
+                            document.getElementById(
+                              "lumpsum-fields"
+                            ).style.display = "block";
+                            document.getElementById("calculate-btn").click();
+                          });
+
+                        // Calculation logic
+                        document
+                          .getElementById("calculate-btn")
+                          .addEventListener("click", function (e) {
+                            e.preventDefault();
+                            let invested = 0,
+                              estReturns = 0,
+                              totalValue = 0,
+                              years = 0;
+
+                            if (document.getElementById("sip-radio").checked) {
+                              // SIP calculation
+                              const monthly =
+                                parseFloat(
+                                  document.getElementById("sip-amount").value
+                                ) || 0;
+                              const rate =
+                                parseFloat(
+                                  document.getElementById("sip-rate").value
+                                ) || 0;
+                              years =
+                                parseFloat(
+                                  document.getElementById("sip-period").value
+                                ) || 0;
+                              if (years > 30) {
+                                alert("Time period cannot exceed 30 years.");
+                                document.getElementById(
+                                  "sip-period"
+                                ).value = 30;
+                                years = 30;
+                              }
+                              const n = years * 12;
+                              const r = rate / 12 / 100;
+                              invested = monthly * n;
+                              totalValue =
+                                monthly *
+                                ((Math.pow(1 + r, n) - 1) / r) *
+                                (1 + r);
+                              estReturns = totalValue - invested;
+                            } else {
+                              // Lumpsum calculation
+                              const principal =
+                                parseFloat(
+                                  document.getElementById("lumpsum-amount")
+                                    .value
+                                ) || 0;
+                              const rate =
+                                parseFloat(
+                                  document.getElementById("lumpsum-rate").value
+                                ) || 0;
+                              years =
+                                parseFloat(
+                                  document.getElementById("lumpsum-period")
+                                    .value
+                                ) || 0;
+                              if (years > 30) {
+                                alert("Time period cannot exceed 30 years.");
+                                document.getElementById(
+                                  "lumpsum-period"
+                                ).value = 30;
+                                years = 30;
+                              }
+                              invested = principal;
+                              totalValue =
+                                principal * Math.pow(1 + rate / 100, years);
+                              estReturns = totalValue - invested;
+                            }
+
+                            // Update results
+                            document.getElementById(
+                              "invested-amount"
+                            ).textContent =
+                              "₹" +
+                              invested.toLocaleString("en-IN", {
+                                minimumFractionDigits: 2,
+                              });
+                            document.getElementById(
+                              "interest-earned"
+                            ).textContent =
+                              "₹" +
+                              estReturns.toLocaleString("en-IN", {
+                                minimumFractionDigits: 2,
+                              });
+                            document.getElementById(
+                              "total-amount"
+                            ).textContent =
+                              "₹" +
+                              totalValue.toLocaleString("en-IN", {
+                                minimumFractionDigits: 2,
+                              });
+                            document.getElementById("loan-years").textContent =
+                              years;
+                          });
+
+                        // Auto-calculate on page load with default values
+                        window.addEventListener(
+                          "DOMContentLoaded",
+                          function () {
+                            document.getElementById("calculate-btn").click();
+                          }
+                        );
+                      </script>
+                    </form>
+
+                    <script>
+                      // Toggle SIP/Lumpsum fields
+                      document
+                        .getElementById("sip-radio")
+                        .addEventListener("change", function () {
+                          document.getElementById("sip-fields").style.display =
+                            "block";
+                          document.getElementById(
+                            "lumpsum-fields"
+                          ).style.display = "none";
+                        });
+                      document
+                        .getElementById("lumpsum-radio")
+                        .addEventListener("change", function () {
+                          document.getElementById("sip-fields").style.display =
+                            "none";
+                          document.getElementById(
+                            "lumpsum-fields"
+                          ).style.display = "block";
+                        });
+
+                      // Calculation logic
+                      document
+                        .getElementById("calculate-btn")
+                        .addEventListener("click", function (e) {
+                          e.preventDefault();
+                          let invested = 0,
+                            estReturns = 0,
+                            totalValue = 0;
+
+                          if (document.getElementById("sip-radio").checked) {
+                            // SIP calculation
+                            const monthly =
+                              parseFloat(
+                                document.getElementById("sip-amount").value
+                              ) || 0;
+                            const rate =
+                              parseFloat(
+                                document.getElementById("sip-rate").value
+                              ) || 0;
+                            const years =
+                              parseFloat(
+                                document.getElementById("sip-period").value
+                              ) || 0;
+                            if (years > 30) {
+                              alert("Time period cannot exceed 30 years.");
+                              document.getElementById("sip-period").value = 30;
+                              return;
+                            }
+                            const n = years * 12;
+                            const r = rate / 12 / 100;
+                            invested = monthly * n;
+                            totalValue =
+                              monthly *
+                              ((Math.pow(1 + r, n) - 1) / r) *
+                              (1 + r);
+                            estReturns = totalValue - invested;
+                          } else {
+                            // Lumpsum calculation
+                            const principal =
+                              parseFloat(
+                                document.getElementById("lumpsum-amount").value
+                              ) || 0;
+                            const rate =
+                              parseFloat(
+                                document.getElementById("lumpsum-rate").value
+                              ) || 0;
+                            const years =
+                              parseFloat(
+                                document.getElementById("lumpsum-period").value
+                              ) || 0;
+                            if (years > 30) {
+                              alert("Time period cannot exceed 30 years.");
+                              document.getElementById(
+                                "lumpsum-period"
+                              ).value = 30;
+                              return;
+                            }
+                            invested = principal;
+                            totalValue =
+                              principal * Math.pow(1 + rate / 100, years);
+                            estReturns = totalValue - invested;
+                          }
+
+                          // Update results
+                          document.getElementById(
+                            "invested-amount"
+                          ).textContent =
+                            "₹" + Math.round(invested).toLocaleString("en-IN");
+                          document.getElementById(
+                            "interest-earned"
+                          ).textContent =
+                            "₹" +
+                            Math.round(estReturns).toLocaleString("en-IN");
+                          document.getElementById("total-amount").textContent =
+                            "₹" +
+                            Math.round(totalValue).toLocaleString("en-IN");
+
+                          // Auto-calculate on page load with default values
+                          window.addEventListener(
+                            "DOMContentLoaded",
+                            function () {
+                              document.getElementById("calculate-btn").click();
+                            }
+                          );
+                        });
+                    </script>
+                  </div>
+                </div>
+                <div class="col-md-6" style="background-size: cover">
+                  <div
+                    class="calculator_result"
+                    style="
+                      border: 2px solid #ccc;
+                      border-radius: 8px;
+                      padding: 24px;
+                    "
+                  >
+                    <h3 class="mb-4">Estimations</h3>
+                    <div style="display: grid; gap: 16px">
+                      <div>
+                        <strong>Invested Amount:</strong>
+                        <span id="invested-amount" class="result-value"
+                          >₹0.00</span
+                        >
+                      </div>
+                      <div>
+                        <strong>Interest Earned:</strong>
+                        <span id="interest-earned" class="result-value"
+                          >₹0.00</span
+                        >
+                      </div>
+                      <div>
+                        <strong
+                          >Total Amount after
+                          <span id="loan-years">0</span> Years:</strong
+                        >
+                        <span id="total-amount" class="result-value"
+                          >₹0.00</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="section-action"
+            class="jarallax text-light"
+            aria-label="cta"
+            style="background-size: cover; position: relative; z-index: 0"
+            data-jarallax-original-styles="background-size: cover;"
+          >
+            <div class="container" style="background-size: cover">
+              <div
+                class="row align-items-center"
+                style="background-size: cover"
+              >
+                <div
+                  class="col-md-8 offset-md-2 text-center wow fadeInUp animated"
+                  style="
+                    visibility: visible;
+                    animation-name: fadeInUp;
+                    background-size: cover;
+                  "
+                >
+                  <h2>Do you looking for professional security camera?</h2>
+                  <p>
+                    Lorem ipsum velit commodo proident sint in ad commodo culpa
+                    dolor officia deserunt minim in amet irure proident duis
+                    commodo adipisicing non ad ut quis exercitation dolor velit
+                    esse esse velit eiusmod exercitation culpa ut tempor ut quis
+                    in consectetur velit nostrud aliquip non in est enim
+                    pariatur eiusmod ex irure tempor irure do ut magna.
+                  </p>
+                  <a
+                    href="14_cctv-contact.html"
+                    class="btn-custom text-light wow fadeInUp animated"
+                    style="visibility: visible; animation-name: fadeInUp"
+                    >Get a Free Quote
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              id="jarallax-container-1"
+              style="
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                z-index: -100;
+                clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%);
+              "
+            >
+              <img
+                src="14_images-cctv/bg/2.jpg"
+                class="jarallax-img"
+                alt=""
+                style="
+                  object-fit: cover;
+                  object-position: 50% 50%;
+                  max-width: none;
+                  position: absolute;
+                  top: 0px;
+                  left: 0px;
+                  width: 1520.8px;
+                  height: 321.9px;
+                  overflow: hidden;
+                  pointer-events: none;
+                  transform-style: preserve-3d;
+                  backface-visibility: hidden;
+                  will-change: transform, opacity;
+                  margin-top: -30.95px;
+                  transform: translate3d(0px, -45.8875px, 0px);
+                "
+              />
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div id="footer"></div>
+    </div>
+
+    <script>
+      function loadComponent(id, url) {
+        fetch(url)
+          .then((response) => response.text())
+          .then((data) => (document.getElementById(id).innerHTML = data));
+      }
+
+      loadComponent("header", "header.html");
+      loadComponent("footer", "footer.html");
+    </script>
+    <script src="js/plugins.js"></script>
+    <script src="js/designesia.js"></script>
+  </body>
+</html>
