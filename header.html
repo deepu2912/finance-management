@@ -4,18 +4,25 @@
       <div class="col-lg-3 col-md-12" style="background-size: cover">
         <!-- logo begin -->
         <div id="logo">
-          <img
-            class="logo"
-            style="max-width: 100%; max-height: 100%; object-fit: contain"
-            src="14_images-cctv/logo/logo.png"
-            alt=""
-          />
+          <a>
+            <img
+              class="logo"
+              style="max-width: 100%; max-height: 100%; object-fit: contain"
+              src="14_images-cctv/logo/logo.png"
+              alt=""
+            />
+          </a>
           <style>
             header div#logo {
               display: grid;
               background-size: cover;
               top: -62px;
               position: relative;
+            }
+            @media (max-width: 1024px) {
+              header div#logo {
+                top: -36px;
+              }
             }
             @media (max-width: 768px) {
               header div#logo {
