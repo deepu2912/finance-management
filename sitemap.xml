@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap-image/1.1">
+    <url>
+        <loc>http://www.investheights.com/</loc>
+        <lastmod>2023-10-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://www.investheights.com/stock-broking.html</loc>
+        <lastmod>2023-10-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>http://www.investheights.com/14_images-cctv/services/stockBroking.png</image:loc>
+            <image:caption>Maximize Your Wealth with Expert Equity Calls</image:caption>
+        </image:image>
+    </url>
+</urlset>

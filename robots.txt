@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /node_modules/
+Disallow: /js/
+Disallow: /css/
+Disallow: /images/
+Disallow: /fonts/
+Allow: /
+
+Sitemap: /sitemap.xml
