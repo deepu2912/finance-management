@@ -1,0 +1,60 @@
+/* Market Data Widget Styles */
+.market-widget {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: -50px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1000;
+}
+
+.market-widget h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.market-data {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.market-item {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.market-item h4 {
+    color: #666;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+.market-price {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.price-change {
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.price-up {
+    color: #00c853;
+}
+
+.price-down {
+    color: #ff3d00;
+}
+
+@media (max-width: 768px) {
+    .market-item {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
