@@ -256,14 +256,14 @@ jQuery(document).ready(function () {
     // --------------------------------------------------
     function init_de() {
 
-        enquire.register("screen and (max-width: 993px)", {
-            match: function () {
-                $('header').addClass("header-mobile");
-            },
-            unmatch: function () {
-                $('header').removeClass("header-mobile");
-            }
-        });
+        // enquire.register("screen and (max-width: 993px)", {
+        //     match: function () {
+        //         $('header').addClass("header-mobile");
+        //     },
+        //     unmatch: function () {
+        //         $('header').removeClass("header-mobile");
+        //     }
+        // });
 
         var $window = jQuery(window);
         jQuery('section[data-type="background"]').each(function () {
@@ -396,7 +396,7 @@ jQuery(document).ready(function () {
     }
 
     window.onresize = function (event) {
-		
+	 
         enquire.register("screen and (min-width: 993px)", {
             match: function () {
                 jQuery('#mainmenu').show();
@@ -435,7 +435,7 @@ jQuery(document).ready(function () {
 
     };
 
-
+ 
     function init() {
 
         var sh = jQuery('#de-sidebar').css("height");
@@ -1887,3 +1887,21 @@ jQuery(document).ready(function () {
 
 });
 
+
+function updateHeaderForMobile() {
+    setTimeout(function() {
+        if (window.innerWidth <= 993) {
+            document.querySelector('header').classList.add('header-mobile');
+        } else {
+            document.querySelector('header').classList.remove('header-mobile');
+        }
+    }, 500);
+}
+
+window.addEventListener('resize', function() {
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        updateHeaderForMobile();
+    }
+});
+
+window.addEventListener('DOMContentLoaded', updateHeaderForMobile);

@@ -582,7 +582,7 @@ overflow:visible;
 	background:rgba(255,255,255,.02);
 	margin-bottom:-1px;
 	height:60px;
-	padding-top:-1
+	padding-top:-1px;
 	}
 	.header-custom:not(.header-mobile) .form-default{
 		margin-top:-5px;
